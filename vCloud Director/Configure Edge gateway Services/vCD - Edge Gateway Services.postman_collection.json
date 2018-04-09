@@ -1,0 +1,128 @@
+{
+	"info": {
+		"_postman_id": "7705c17e-4d6e-4813-9cfc-abaffd8140b4",
+		"name": "vCD - Edge Gateway Services",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Configure FW Service on an Edge Gateway",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/*;version=9.0"
+					},
+					{
+						"key": "x-vcloud-authorization",
+						"value": "{{token}}",
+						"description": "Token retrieved in POST message"
+					},
+					{
+						"key": "Content-Type",
+						"value": " application/vnd.vmware.admin.edgeGatewayServiceConfiguration+xml"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "<EdgeGatewayServiceConfiguration xmlns=\"http://www.vmware.com/vcloud/v1.5\">\r\n<GatewayDhcpService>\r\n<IsEnabled>false</IsEnabled>\r\n</GatewayDhcpService>\r\n<FirewallService>\r\n<IsEnabled>true</IsEnabled>\r\n<DefaultAction>allow</DefaultAction>\r\n<LogDefaultAction>false</LogDefaultAction>\r\n</FirewallService>\r\n<NatService>\r\n<IsEnabled>true</IsEnabled>\r\n</NatService>\r\n<GatewayIpsecVpnService>\r\n<IsEnabled>false</IsEnabled>\r\n</GatewayIpsecVpnService>\r\n<StaticRoutingService>\r\n<IsEnabled>true</IsEnabled>\r\n</StaticRoutingService>\r\n<LoadBalancerService>\r\n<IsEnabled>false</IsEnabled>\r\n</LoadBalancerService>\r\n</EdgeGatewayServiceConfiguration>"
+				},
+				"url": {
+					"raw": "https://{{url}}/api/admin/edgeGateway/7f221cfc-c21c-4ddb-9c4d-24c3eae1db2c/action/configureServices",
+					"protocol": "https",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"admin",
+						"edgeGateway",
+						"7f221cfc-c21c-4ddb-9c4d-24c3eae1db2c",
+						"action",
+						"configureServices"
+					]
+				},
+				"description": "Change the Default FW Rule to Accept\n```console\n<DefaultAction>allow</DefaultAction>\n```"
+			},
+			"response": []
+		},
+		{
+			"name": "Configure FW Service on an Edge Gateway",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/*;version=9.0"
+					},
+					{
+						"key": "x-vcloud-authorization",
+						"value": "{{token}}",
+						"description": "Token retrieved in POST message"
+					},
+					{
+						"key": "Content-Type",
+						"value": " application/vnd.vmware.admin.edgeGatewayServiceConfiguration+xml"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "<EdgeGatewayServiceConfiguration xmlns=\"http://www.vmware.com/vcloud/v1.5\">\r\n<GatewayDhcpService>\r\n<IsEnabled>false</IsEnabled>\r\n</GatewayDhcpService>\r\n<FirewallService>\r\n<IsEnabled>true</IsEnabled>\r\n<DefaultAction>drop</DefaultAction>\r\n<LogDefaultAction>false</LogDefaultAction>\r\n</FirewallService>\r\n<NatService>\r\n<IsEnabled>true</IsEnabled>\r\n</NatService>\r\n<GatewayIpsecVpnService>\r\n<IsEnabled>false</IsEnabled>\r\n</GatewayIpsecVpnService>\r\n<StaticRoutingService>\r\n<IsEnabled>true</IsEnabled>\r\n</StaticRoutingService>\r\n<LoadBalancerService>\r\n<IsEnabled>false</IsEnabled>\r\n</LoadBalancerService>\r\n</EdgeGatewayServiceConfiguration>"
+				},
+				"url": {
+					"raw": "https://{{url}}/api/admin/edgeGateway/7f221cfc-c21c-4ddb-9c4d-24c3eae1db2c/action/configureServices",
+					"protocol": "https",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"admin",
+						"edgeGateway",
+						"7f221cfc-c21c-4ddb-9c4d-24c3eae1db2c",
+						"action",
+						"configureServices"
+					]
+				},
+				"description": "Change the Default FW Rule to Deny\n```console\n<DefaultAction>drop</DefaultAction>\n```"
+			},
+			"response": []
+		},
+		{
+			"name": "Get edge config",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/*;version=9.0"
+					},
+					{
+						"key": "x-vcloud-authorization",
+						"value": "{{token}}",
+						"description": "Token retrieved in POST message"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://{{url}}/api/admin/edgeGateway/7f221cfc-c21c-4ddb-9c4d-24c3eae1db2c",
+					"protocol": "https",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"admin",
+						"edgeGateway",
+						"7f221cfc-c21c-4ddb-9c4d-24c3eae1db2c"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

@@ -1,0 +1,115 @@
+{
+	"info": {
+		"_postman_id": "5599c394-1fd4-473c-b1dd-62c94ec96828",
+		"name": "vCD - Get Edge Configuration",
+		"description": "Retrieve Edge configuration",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get all edges in the cloud",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/*;version=9.0"
+					},
+					{
+						"key": "x-vcloud-authorization",
+						"value": "{{token}}",
+						"description": "Token retrieved in POST message"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://{{url}}/api/query?type=edgeGateway&format=records&pageSize=200",
+					"protocol": "https",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"query"
+					],
+					"query": [
+						{
+							"key": "type",
+							"value": "edgeGateway"
+						},
+						{
+							"key": "format",
+							"value": "records"
+						},
+						{
+							"key": "pageSize",
+							"value": "200"
+						}
+					]
+				},
+				"description": "Get all edges configured in the vCD"
+			},
+			"response": []
+		},
+		{
+			"name": "Get edge config",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/*;version=9.0"
+					},
+					{
+						"key": "x-vcloud-authorization",
+						"value": "{{token}}",
+						"description": "Token retrieved in POST message"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://{{url}}/api/admin/edgeGateway/7f221cfc-c21c-4ddb-9c4d-24c3eae1db2c",
+					"protocol": "https",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"admin",
+						"edgeGateway",
+						"7f221cfc-c21c-4ddb-9c4d-24c3eae1db2c"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "cc148ad1-e67d-46eb-b24b-315121663c5a",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "67a8e88d-99ac-445f-b6b6-f71d4dc60f4a",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}
