@@ -1,0 +1,219 @@
+{
+	"info": {
+		"_postman_id": "717e1dc8-60db-4132-96b9-1232bf421d32",
+		"name": "NSX - Edge Service Gateway - FW",
+		"description": "Configure Edge Service Gateway FW services at a NSX Edge",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Query FW configuration",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Basic YWRtaW46bGFidXNlcg=="
+					}
+				],
+				"body": {},
+				"url": {
+					"raw": "https://10.33.94.154/api/4.0/edges/edge-482/firewall/config",
+					"protocol": "https",
+					"host": [
+						"10",
+						"33",
+						"94",
+						"154"
+					],
+					"path": [
+						"api",
+						"4.0",
+						"edges",
+						"edge-482",
+						"firewall",
+						"config"
+					]
+				},
+				"description": "Retrieve Edge FW Configuration "
+			},
+			"response": []
+		},
+		{
+			"name": "Configure FW rules - default action Accept",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Basic YWRtaW46bGFidXNlcg=="
+					},
+					{
+						"key": "Accept",
+						"value": "text/plain"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/xml"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "<firewall>\n    <enabled>true</enabled>\n    <globalConfig>\n        <tcpPickOngoingConnections>false</tcpPickOngoingConnections>\n        <tcpAllowOutOfWindowPackets>false</tcpAllowOutOfWindowPackets>\n        <tcpSendResetForClosedVsePorts>true</tcpSendResetForClosedVsePorts>\n        <dropInvalidTraffic>true</dropInvalidTraffic>\n        <logInvalidTraffic>false</logInvalidTraffic>\n        <tcpTimeoutOpen>30</tcpTimeoutOpen>\n        <tcpTimeoutEstablished>21600</tcpTimeoutEstablished>\n        <tcpTimeoutClose>30</tcpTimeoutClose>\n        <udpTimeout>60</udpTimeout>\n        <icmpTimeout>10</icmpTimeout>\n        <icmp6Timeout>10</icmp6Timeout>\n        <ipGenericTimeout>120</ipGenericTimeout>\n        <enableSynFloodProtection>false</enableSynFloodProtection>\n        <logIcmpErrors>false</logIcmpErrors>\n        <dropIcmpReplays>false</dropIcmpReplays>\n    </globalConfig>\n    <defaultPolicy>\n        <action>accept</action>\n        <loggingEnabled>true</loggingEnabled>\n    </defaultPolicy>\n</firewall>"
+				},
+				"url": {
+					"raw": "https://10.33.94.154/api/4.0/edges/edge-482/firewall/config",
+					"protocol": "https",
+					"host": [
+						"10",
+						"33",
+						"94",
+						"154"
+					],
+					"path": [
+						"api",
+						"4.0",
+						"edges",
+						"edge-482",
+						"firewall",
+						"config"
+					]
+				},
+				"description": "Change the Default FW Rule to Accept\n```console\n<defaultPolicy>\n    <action>accept</action>\n</defaultPolicy>\n```"
+			},
+			"response": []
+		},
+		{
+			"name": "Configure FW rules - default action Accept brief",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Basic YWRtaW46bGFidXNlcg=="
+					},
+					{
+						"key": "Accept",
+						"value": "text/plain"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/xml"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "<firewall>\n    <enabled>true</enabled>\n    <defaultPolicy>\n        <action>accept</action>\n    </defaultPolicy>\n</firewall>"
+				},
+				"url": {
+					"raw": "https://10.33.94.154/api/4.0/edges/edge-482/firewall/config",
+					"protocol": "https",
+					"host": [
+						"10",
+						"33",
+						"94",
+						"154"
+					],
+					"path": [
+						"api",
+						"4.0",
+						"edges",
+						"edge-482",
+						"firewall",
+						"config"
+					]
+				},
+				"description": "Change the Default FW Rule to Accept\n```console\n<defaultPolicy>\n    <action>accept</action>\n</defaultPolicy>\n```"
+			},
+			"response": []
+		},
+		{
+			"name": "Configure FW rules - default action Deny",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Basic YWRtaW46bGFidXNlcg=="
+					},
+					{
+						"key": "Accept",
+						"value": "text/plain"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/xml"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "<firewall>\n    <enabled>false</enabled> <!-- Optional. Defaults to true -->\n    <globalConfig> <!-- Optional -->\n        <tcpPickOngoingConnections>false</tcpPickOngoingConnections>\n        <tcpAllowOutOfWindowPackets>false</tcpAllowOutOfWindowPackets>\n        <tcpSendResetForClosedVsePorts>true</tcpSendResetForClosedVsePorts>\n        <dropInvalidTraffic>true</dropInvalidTraffic>\n        <logInvalidTraffic>false</logInvalidTraffic>\n        <tcpTimeoutOpen>30</tcpTimeoutOpen>\n        <tcpTimeoutEstablished>21600</tcpTimeoutEstablished>\n        <tcpTimeoutClose>30</tcpTimeoutClose>\n        <udpTimeout>60</udpTimeout>\n        <icmpTimeout>10</icmpTimeout>\n        <icmp6Timeout>10</icmp6Timeout>\n        <ipGenericTimeout>120</ipGenericTimeout>\n        <enableSynFloodProtection>false</enableSynFloodProtection>\n        <logIcmpErrors>false</logIcmpErrors>\n        <dropIcmpReplays>false</dropIcmpReplays>\n    </globalConfig>\n    <defaultPolicy> <!-- Optional. default is deny -->\n        <action>deny</action>\n        <loggingEnabled>true</loggingEnabled> <!-- Optional. Defaults to false -->\n    </defaultPolicy>\n</firewall>"
+				},
+				"url": {
+					"raw": "https://10.33.94.154/api/4.0/edges/edge-482/firewall/config",
+					"protocol": "https",
+					"host": [
+						"10",
+						"33",
+						"94",
+						"154"
+					],
+					"path": [
+						"api",
+						"4.0",
+						"edges",
+						"edge-482",
+						"firewall",
+						"config"
+					]
+				},
+				"description": "Change the Default FW Rule to Accept\n```console\n<defaultPolicy>\n    <action>deny</action>\n</defaultPolicy>\n```"
+			},
+			"response": []
+		},
+		{
+			"name": "Configure FW rules - default action Deny brief",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Basic YWRtaW46bGFidXNlcg=="
+					},
+					{
+						"key": "Accept",
+						"value": "text/plain"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/xml"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "<firewall>\n    <enabled>false</enabled> <!-- Optional. Defaults to true -->\n</firewall>"
+				},
+				"url": {
+					"raw": "https://10.33.94.154/api/4.0/edges/edge-482/firewall/config",
+					"protocol": "https",
+					"host": [
+						"10",
+						"33",
+						"94",
+						"154"
+					],
+					"path": [
+						"api",
+						"4.0",
+						"edges",
+						"edge-482",
+						"firewall",
+						"config"
+					]
+				},
+				"description": "Change the Default FW Rule to Accept\n```console\n<defaultPolicy>\n    <action>deny</action>\n</defaultPolicy>\n```"
+			},
+			"response": []
+		}
+	]
+}
